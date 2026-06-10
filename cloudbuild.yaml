@@ -20,3 +20,6 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/sonic-sage-backend'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
