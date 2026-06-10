@@ -12,7 +12,7 @@ steps:
         'run', 'deploy', 'sonic-sage-backend',
         '--image', 'gcr.io/$PROJECT_ID/sonic-sage-backend',
         '--platform', 'managed',
-        '--region', 'europe-west1',
+        '--region', 'europe-west2',
         '--allow-unauthenticated',
         '--memory', '256Mi',
         '--cpu', '1'
