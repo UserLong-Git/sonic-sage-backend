@@ -5,11 +5,28 @@ import (
     "os"
 
     "github.com/gofiber/fiber/v2"
+    "github.com/gofiber/fiber/v2/middleware/cors"
     "github.com/daniellong/sonic-sage-backend/routes"
 )
 
 func main() {
     app := fiber.New()
+
+    // --- ROOT ROUTE (add this) ---
+    app.Get("/", func(c *fiber.Ctx) error {
+        return c.JSON(fiber.Map{
+            "message": "Sonic Sage backend is live",
+        })
+    })
+    // ------------------------------
+
+    // --- CORS MIDDLEWARE ---
+    app.Use(cors.New(cors.Config{
+        AllowOrigins: "*",
+        AllowMethods: "GET,POST,OPTIONS",
+        AllowHeaders: "Content-Type",
+    }))
+    // ------------------------
 
     app.Get("/health", func(c *fiber.Ctx) error {
         return c.JSON(fiber.Map{"status": "ok"})
